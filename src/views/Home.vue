@@ -64,7 +64,7 @@ export default {
             icon: 'far fa-address-card',
             route: '',
             type: 1,
-            show: true,
+            show: false,
             sub: [
               {
                 nome: 'Pessoas',

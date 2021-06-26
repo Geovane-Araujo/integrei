@@ -62,7 +62,7 @@ import MenuBar from './MenuBar.vue'
 export default {
   props: {
     side: {
-      type: Array,
+      type: Object,
       required: true
     }
   },

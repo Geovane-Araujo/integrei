@@ -5,15 +5,15 @@
       <div class="sidebar-menu">
         <ul>
           <div v-for="item in itens_menu" :key="item.nome">
-            <div :v-show="(item.type === 1)">
+            <div v-if="item.type === 1">
               <li class="sidebar-dropdown">
-                <a href="#" class="ab">
-                  <i :class="item.icon"></i>
+                <router-link to="/" class="ab">
+                  <i style="margin-right: 10px;" :class="item.icon"></i>
                   <span>{{ item.nome }}</span>
-                </a>
+                </router-link>
                 <div class="sidebar-submenu">
                   <ul>
-                    <li v-for="sub_item in item.sub" :key="sub_item.nome">
+                    <li style="list-style:none;" v-for="sub_item in item.sub" :key="sub_item.nome">
                       <router-link class="ab" :to="sub_item.route">{{ sub_item.nome }}
                       </router-link>
                     </li>
@@ -21,10 +21,10 @@
                 </div>
               </li>
             </div>
-            <div :v-else-if="item.type === 0">
+            <div v-else-if="item.type === 0">
               <li>
                 <router-link class="ab" :to="item.route">
-                  <i :class="item.icon"></i>
+                  <i style="margin-right: 10px;" :class="item.icon"></i>
                   <span>{{ item.nome }}</span>
                 </router-link>
               </li>
@@ -34,6 +34,7 @@
       </div>
     </div>
   </nav>
+  <div style="background-color: #16c7ff">Teste De Localização</div>
 </div>
 </template>
 <script>
@@ -50,25 +51,17 @@ export default {
   mounted () {
     $('.sidebar-dropdown > .ab').click(function () {
       $('.sidebar-submenu').slideUp(200)
-      if (
-        $(this)
-          .parent()
-          .hasClass('active')
-      ) {
+      if ($(this).parent().hasClass('active')) {
         $('.sidebar-dropdown').removeClass('active')
-        $(this)
-          .parent()
-          .removeClass('active')
+        $(this).parent().removeClass('active')
       } else {
         $('.sidebar-dropdown').removeClass('active')
-        $(this)
-          .next('.sidebar-submenu')
-          .slideDown(200)
-        $(this)
-          .parent()
-          .addClass('active')
+        $(this).next('.sidebar-submenu').slideDown(200)
+        $(this).parent().addClass('active')
       }
     })
+  },
+  methods: {
   }
 }
 </script>
@@ -103,12 +96,9 @@ export default {
   }
 }
 
-/*----------------toggeled sidebar----------------*/
-
 .page-wrapper.toggled .sidebar-wrapper {
   left: 0px;
 }
-
 @media screen and (min-width: 768px) {
   .page-wrapper.toggled .page-content {
     padding-left: 300px;
@@ -116,7 +106,7 @@ export default {
 }
 
 .sidebar-wrapper {
-  width: 220px;
+  width: 190px;
   height: 100%;
   max-height: 100%;
   position: fixed;
@@ -186,7 +176,7 @@ export default {
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown > .ab:after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  content: "\f105";
+  // content: "\f105";
   font-style: normal;
   display: inline-block;
   font-style: normal;
@@ -206,7 +196,7 @@ export default {
 }
 
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li {
-  padding-left: 25px;
+  padding-left: 15px;
   font-size: 13px;
 }
 
@@ -310,11 +300,11 @@ export default {
     color: #818896;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
+.chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>ab,
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>.ab,
 .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
 .chiller-theme .sidebar-wrapper .sidebar-brand>.ab:hover,
-.chiller-theme .sidebar-footer>a:hover i {
+.chiller-theme .sidebar-footer>ab:hover i {
     color: #b8bfce;
 }
 
