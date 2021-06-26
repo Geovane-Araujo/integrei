@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin: 0px;" data-component="navbar">
+    <div data-component="navbar">
       <nav class="navbar p-0 fixed-top">
       <a class="navbar-brand px-1" href="#"><img src="./icons.svg" class="d-inline-block mt-1" alt="AgentFire Logo" height="40"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#megamenu-dropdown" aria-controls="megamenu-dropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,10 +47,8 @@
         </div>
       </nav>
     </div>
-    <div data-component="sidebar">
-      <div class="sidebar">
-        <MenuBar/>
-      </div>
+    <div class="sidebar-menu-nav">
+      <MenuBar :itens_menu="side.menu"/>
     </div>
     <div class="wp-content" id="content">
       <div class="container-fluid">
